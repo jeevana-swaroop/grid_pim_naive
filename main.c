@@ -123,11 +123,11 @@ int main(int argc, char **argv)
 
   qsort(indStructure, gridsCount, sizeof(indexStructure), compare_1);
 
-  for (int i = 0; i < gridsCount; i++)
-  {
+  // for (int i = 0; i < gridsCount; i++)
+  // {
 
-    printf("%ld-->%ld-->%ld\n", indStructure[i].linearCoordinate, indStructure[i].gridCoordinates[0], indStructure[i].gridCoordinates[1]);
-  }
+  //   printf("%ld-->%ld-->%ld\n", indStructure[i].linearCoordinate, indStructure[i].gridCoordinates[0], indStructure[i].gridCoordinates[1]);
+  // }
 
   // for (int i = 0; i < gridsCount; i++)
   // {
@@ -190,7 +190,7 @@ int main(int argc, char **argv)
 
     uint64_t load = (uint64_t)(iDIMLengths[0] / NR_DPUS);
 
-    printf("\n%ld-->%ld\n", iDIMLengths[0], load);
+    // printf("\n%ld-->%ld\n", iDIMLengths[0], load);
 
     uint64_t startGrid = dpuIdx * load;
     uint64_t endGrid = startGrid + load;
@@ -199,7 +199,7 @@ int main(int argc, char **argv)
     {
       endGrid = iDIMLengths[0];
     }
-    printf("\n%ld-->%ld\n", startGrid, endGrid);
+    // printf("\n%ld-->%ld\n", startGrid, endGrid);
 
     int64_t gridStartPoint = -1;
     uint64_t gridArrSize = 0;
@@ -208,7 +208,7 @@ int main(int argc, char **argv)
 
     uint64_t pointsInGridStart = 0;
 
-    printf("gridcount = %ld\n", gridsCount);
+    // printf("gridcount = %ld\n", gridsCount);
     for (int i = 0; i < gridsCount; i++)
     {
 
@@ -243,8 +243,8 @@ int main(int argc, char **argv)
 
     qsort(tempBuffer, gridArrSize, sizeof(indexStructure), compare_2);
 
-    printf("%ld-->%ld-->%ld-->%ld\n", gridStartPoint, gridArrSize, dataStartPoint, dataArrSize);
-    printf("%ld-->%ld\n", sizeof(indexStructure) * gridArrSize, dpuIdx);
+    // printf("%ld-->%ld-->%ld-->%ld\n", gridStartPoint, gridArrSize, dataStartPoint, dataArrSize);
+    // printf("%ld-->%ld\n", sizeof(indexStructure) * gridArrSize, dpuIdx);
 
     uint64_t adjustedSize = dataArrSize + (dataArrSize % 8);
 
