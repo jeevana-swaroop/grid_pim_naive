@@ -7,8 +7,8 @@
 #include <mutex.h>
 #include <barrier.h>
 
-__mram indexStructure structureArr[2048];
-__mram float arrangedData[2048 * DIM];
+__mram indexStructure structureArr[2048 * 256];
+__mram float arrangedData[2048 * 256 * DIM];
 __mram uint64_t myIndex;
 __host uint64_t structSize;
 __host uint64_t dataSize;

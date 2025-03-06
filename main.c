@@ -6,7 +6,7 @@
 int main(int argc, char **argv)
 {
 
-  uint64_t N = 1000;
+  uint64_t N = 10000;
   float epsilon = (float)EPSILON;
 
   float *dataset = (float *)malloc(sizeof(float) * N * DIM);
@@ -258,7 +258,13 @@ int main(int argc, char **argv)
     DPU_ASSERT(dpu_copy_to(dpu, "endGrid", 0, &endGrid, sizeof(uint64_t)));
   }
 
+  clock_t startclock, endclock;
+
+  startclock = clock();
+
   dpu_launch(dpu_set, DPU_SYNCHRONOUS);
+
+  endclock = clock();
 
   uint64_t *count = (uint64_t *)calloc(NR_DPUS, sizeof(uint64_t));
   uint64_t globalCount = 0;
@@ -277,6 +283,7 @@ int main(int argc, char **argv)
   }
 
   printf("\ncount: %ld\n", globalCount);
+  printf("\n%lf\n", (double)(endclock - startclock) / CLOCKS_PER_SEC);
 
   return 0;
 }

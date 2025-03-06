@@ -7,6 +7,7 @@
 #include <string.h>
 #include <math.h>
 #include <stdint.h>
+#include <time.h>
 #include "parm.h"
 
 int importDataset(char *fname, uint64_t N, float *dataset, uint64_t Dim);
